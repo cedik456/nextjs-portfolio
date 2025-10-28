@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "@/app/context/ThemeContext";
 import {
   Bars3Icon,
   MoonIcon,
@@ -10,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const Navbar = () => {
-  const theme = "dark";
+  const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const toggleMobileMenu = () => {
@@ -25,7 +26,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex w-full bg-dark/80 backdrop-blur-sm z-50">
+    <nav className="flex w-full dark:bg-dark/80 backdrop-blur-sm z-50 shadow">
       <div className="container max-w-7xl mx-auto px-4">
         {/* desktop menu */}
         <div className="flex items-center justify-between h-16">
@@ -50,7 +51,10 @@ const Navbar = () => {
                 </Link>
               );
             })}
-            <button className="hover:text-primary transition-colors cursor-pointer">
+            <button
+              onClick={toggleTheme}
+              className="hover:text-primary transition-colors cursor-pointer"
+            >
               {theme === "dark" ? (
                 <SunIcon className="w-5 h-5" />
               ) : (
@@ -86,7 +90,10 @@ const Navbar = () => {
                 </div>
               ))}
               <div>
-                <button className="py-2 flex items-center">
+                <button
+                  onClick={toggleTheme}
+                  className="py-2 flex items-center"
+                >
                   {theme === "dark" ? (
                     <SunIcon className="w-5 h-5 mr-2" />
                   ) : (
