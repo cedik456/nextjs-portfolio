@@ -89,7 +89,7 @@ const Navbar = () => {
                   </Link>
                 </div>
               ))}
-              <div>
+              <div className="flex items-center justify-center border-t mt-4 pt-4 border-muted -mx-4 border-t-gray-200">
                 <button
                   onClick={toggleTheme}
                   className="py-2 flex items-center"
