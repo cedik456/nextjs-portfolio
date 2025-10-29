@@ -28,8 +28,8 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <Navbar />
-          {children}
-          {/* <Footer /> */}
+          <main className="min-h-screen pt-24">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
