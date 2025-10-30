@@ -1,20 +1,47 @@
+"use client";
+
 import { projects } from "@/contents/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { staggerContainer } from "../utils/animation";
 
 export default function ProjectsPage() {
   return (
     <div className="container max-w-7xl mx-auto py-20">
-      <h1 className="text-4xl font-bold mb-4 text-center">My Projects</h1>
-      <p className="text-lg text-secondary mb-24 text-center">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl font-bold mb-4 text-center"
+      >
+        My Projects
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-lg text-secondary mb-24 text-center"
+      >
         Here are some of my recent projects. Click on the links to view the code
         or live demo
-      </p>
+      </motion.p>
 
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
+      <motion.div
+        variants={staggerContainer}
+        initial="initial"
+        animate="animate"
+        className="grid md:grid-cols-3 grid-cols-1 gap-8"
+      >
         {projects.map((project) => (
-          <article
+          <motion.article
+            whileHover={{ scale: 1.02 }}
+            transition={{
+              type: "spring" as const,
+              stiffness: 250,
+              damping: 20,
+            }}
             key={project.title}
             className="bg-white dark:bg-dark/50 rounded-lg shadow-md p-6"
           >
@@ -62,9 +89,9 @@ export default function ProjectsPage() {
                 <span>Live Demo</span>
               </Link>
             </div>
-          </article>
+          </motion.article>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
