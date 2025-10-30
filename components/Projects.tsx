@@ -19,7 +19,7 @@ const Projects = () => {
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover"
+                className="absolute left-0 top-0 h-full w-full border-none transition-all duration-300 ease-out opacity-70 mask-[linear-gradient(to_top,transparent_20%,#000_100%)] group-hover:scale-105 object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw"
               />
             </div>
